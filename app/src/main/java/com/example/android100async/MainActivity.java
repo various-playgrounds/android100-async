@@ -11,18 +11,25 @@ import android.widget.ImageView;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
+import java.util.concurrent.Executors;
 
 public class MainActivity extends AppCompatActivity {
     public static final String CAT_IMAGE = "https://www.petmd.com/sites/default/files/petmd-cat-happy-10.jpg";
+
+//    ListeningExecutorService threadPoolExecutor = MoreExecutors.listeningDecorator(Executors.newCachedThreadPool());
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        final ImageView imageView = findViewById(R.id.image_view);
+//        final ImageView imageView = findViewById(R.id.image);
+//        final ImageView croppedView = findViewById(R.id.image_cropped);
+//        final ImageView rotatedView = findViewById(R.id.image_rotated);
 
-        // 3) async task
+
+
+//        // 3) async task
         DownloadImageAsyncTask downloadImageAsyncTask = new DownloadImageAsyncTask();
         downloadImageAsyncTask.execute(CAT_IMAGE);
 
@@ -76,7 +83,7 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         protected void onPostExecute(Bitmap bitmap) {
-            ImageView imageView = findViewById(R.id.image_view);
+            ImageView imageView = findViewById(R.id.image);
             imageView.setImageBitmap(bitmap);
         }
     }
